@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Cubans</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Custom Cubans</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html">Cart</a>
+        <a href="payment.html">Payment</a>
+    </nav>
+</header>
+
+<main class="products">
+    <!-- Example product card -->
+    <div class="product-card" data-name="Silver Cadena" data-price="15000">
+        <img src="images/8mmSilverCuban_l.webp" alt="Silver Cadena">
+        <h3>Silver Cadena</h3>
+        <p>8mm</p>
+        <div class="price">$15,000</div>
+        <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
+    <!-- Add remaining product cards here, repeating the same structure -->
+</main>
+
+<footer>
+    &copy; Derick Motlhabani 2025. All rights reserved.
+</footer>
+
+<script>
+function addToCart(button) {
+    const card = button.closest('.product-card');
+    const name = card.dataset.name;
+    const price = parseInt(card.dataset.price);
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existing = cart.find(item => item.name === name);
+    if (existing) {
+        existing.quantity++;
+    } else {
+        cart.push({ name, price, quantity: 1 });
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${name} added to cart.`);
+}
+</script>
+
+</b
